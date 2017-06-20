@@ -10,7 +10,7 @@ namespace beepboop
     {
         static void Main(string[] args)
         {
-            TestLedger.Ledger bot = new TestLedger.Ledger();
+            Ledger.Ledger bot = new Ledger.Ledger();
         }
     }
 }
