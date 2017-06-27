@@ -19,8 +19,10 @@ namespace Ledger
                 int line = 0;
 
                 line = valid.admin(user.Id.ToString(), name, creds.ssid(), ApplicationName, gcred);
+                if (line == 0)
+                    line = valid.trainer(user.Id.ToString(), name, creds.ssid(), ApplicationName, gcred);
 
-                if (line != 0)
+                if (line != 0 && valid.dectest(ammount))
                 {
                     String range2 = "Characters!F" + line.ToString();
                     var oblist = new List<object>() { ammount };
@@ -48,7 +50,7 @@ namespace Ledger
 
                 ammount = account.xp(name, gcred, ApplicationName);
 
-                if ((valid.charcheck(user.Id.ToString(), name, creds.ssid(), ApplicationName, gcred) == 0 && valid.admin(user.Id.ToString(), name, creds.ssid(), ApplicationName, gcred) == 0) || ammount == null)
+                if ((valid.charcheck(user.Id.ToString(), name, creds.ssid(), ApplicationName, gcred) == 0 && (valid.admin(user.Id.ToString(), name, creds.ssid(), ApplicationName, gcred) == 0 && valid.trainer(user.Id.ToString(), name, creds.ssid(), ApplicationName, gcred) == 0) || ammount == null))
                 {
                     await e.Channel.SendMessage("This is either not your character or this character does not exist.");
                     Console.WriteLine(user.Name + " has tried to look up the XP of " + name + " and failed");
@@ -72,7 +74,7 @@ namespace Ledger
 
                 ammount = account.level(name, gcred, ApplicationName);
 
-                if ((valid.charcheck(user.Id.ToString(), name, creds.ssid(), ApplicationName, gcred) == 0 && valid.admin(user.Id.ToString(), name, creds.ssid(), ApplicationName, gcred) == 0) || ammount == null)
+                if ((valid.charcheck(user.Id.ToString(), name, creds.ssid(), ApplicationName, gcred) == 0 && (valid.admin(user.Id.ToString(), name, creds.ssid(), ApplicationName, gcred) == 0 && valid.trainer(user.Id.ToString(), name, creds.ssid(), ApplicationName, gcred) == 0) || ammount == null))
                 {
                     await e.Channel.SendMessage("This is either not your character or this character does not exist.");
                     Console.WriteLine(user.Name + " has tried to look up the level of " + name + " and failed");
@@ -96,7 +98,7 @@ namespace Ledger
 
                 ammount = account.next(name, gcred, ApplicationName);
 
-                if ((valid.charcheck(user.Id.ToString(), name, creds.ssid(), ApplicationName, gcred) == 0 && valid.admin(user.Id.ToString(), name, creds.ssid(), ApplicationName, gcred) == 0) || ammount == null)
+                if ((valid.charcheck(user.Id.ToString(), name, creds.ssid(), ApplicationName, gcred) == 0 && (valid.admin(user.Id.ToString(), name, creds.ssid(), ApplicationName, gcred) == 0 && valid.trainer(user.Id.ToString(), name, creds.ssid(), ApplicationName, gcred) == 0) || ammount == null))
                 {
                     await e.Channel.SendMessage("This is either not your character or this character does not exist.");
                     Console.WriteLine(user.Name + " has tried to look up the next of " + name + " and failed");
@@ -121,6 +123,8 @@ namespace Ledger
                 int t = 0;
 
                 lnnum = valid.admin(user.Id.ToString(), name, creds.ssid(), ApplicationName, gcred);
+                if (lnnum == 0)
+                    lnnum = valid.trainer(user.Id.ToString(), name, creds.ssid(), ApplicationName, gcred);
 
                 if (type == "add" || type == "Add" || type == "ADD")
                     t = 1;

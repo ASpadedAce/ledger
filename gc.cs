@@ -19,28 +19,49 @@ namespace Ledger
         {
             commands.CreateCommand("help").Do(async (e) =>        //command descriptions
             {
-                string ara = "**hello** - Online test\n";
-                string ba = "**bank** *charactername* - Checks how much money you have\n";
-                string fr = "**first** *yourname* - let's us know who's character is who's\n";
-                string nw = "**new** *charactername* - Creates a new character\n";
-                string sp = "**spend** *charactername* *ammountofmoney*- spends your money\n";
-                string adm = "**admin** *discordid* - adds person as an admin by discord id\n";
-                string aa = "**payday** - Adds everyone's daily payment, admin\n";
-                string pd = "**addall** *ammount* - Adds and ammount to every account, admin only.\n";
-                string sa = "**suball** *ammount* - Subs ammount from all accounts, admin only.\n";
-                string ad = "**add** *name* *ammount* - Add ammount to certain character, admin only.\n";
-                string sb = "**sub** *name* *ammount* - Subs ammount from certain character, admin only.\n";
-                string xf = "**xfer** *charactername* *persontransphereto* - Transpheres a character to another person, must be an admin if it is not your character.\n";
-                string del = "**delete** *charactername* - Deletes a character, must be your own character or you must be an admin.\n";
-                string sg = "**setgold** *charactername* *goldammount*- Sets the ammount of gold in a character's bank to a specific ammont, admin only\n";
-                string xp = "**setxp** *charactername* *xpammount*- Sets the ammount of xp for aa character, admin only.\n";
-                string nm = "**name?** - Tells you what the bot knows you as, useful if you forgot your name you put for the first command\n";
-                string axp = "**addxp** *charactername* *ammount*- Adds xp to a character, admin only.\n";
-                string sxp = "**subxp** *charactername* *ammount* - Subtracts xp from a character, admin only.\n";
-                string lvl = "**level?** *charactername* - Tells you the level of a chracter, must be your chracter or you must be an admin.\n";
-                string xpq = "**xp?** *charactername* - Tells you how much xp your character has in total, must be your character or you must be an admin.\n";
-                string nxt = "**next?** *charactername* - Tells you how much xp your charactrer needs to get to the next level, must by yourt character or you must be an admin.\n";
-                await e.Channel.SendMessage(ara + ba + fr + nw + sp + aa + sa + pd + adm + ad + sb + xf + nm + sg + xp + axp + sxp + lvl + xpq + nxt + del);
+                string gc = "**General Commands:**\n";
+                string ara = "__hello__ - Online test\n";
+                string hp = "__help__ - Accesses the help messages.\n";
+                string gcommands = gc + ara + hp;
+
+                string reg = "**Registration Commands:**\n";
+                string fr = "__first__ *name* - Tells the bot what *name* you (the person **not** chracter) would like to be known by.\n";
+                string nw = "__new__ *name* - Creates a new character with the give *name*\n";
+                string xf = "__xfer__ *character* *person* - Transpheres a *character* to another *person*, must be an admin if it is not your character.\n";
+                string del = "__delete__ *character* - Deletes a *character*, must be your own character or you must be an admin.\n";
+                string nm = "__name?__ - Tells you what the bot knows you as, useful **xfer** and **give**\n";
+                string regcommands = reg + fr + nw + xf + del + nm;
+
+                string money = "**Money Commands:**\n";
+                string ba = "__bank__ *character* - Checks how much money a *character* has. (Your character, admin, accountant)\n";
+                string sp = "__withdrawal__ *character* *ammount*- spends an *ammount* of a *character*'s money. (Your character, admin, accountant)\n";
+                string aa = "__payday__ - Adds everyone's daily payment. (admin) \n";
+                string pd = "__classaction__ *type* *ammount* - Adds(if *type* = add) or subtracts(if *type* = sub) an *ammount* to every account. (admin) \n";
+                string ad = "__teller__ *type* *character* *ammount* - Adds(if *type* = add) or subtracts(if *type* = sub) an *ammount* to certain *character*. (admin, accountant)\n";
+                string sb = "__decree__ *character* *ammount* - Set's a *character*'s bank account to the *ammount* specified. (admin, accountant)\n";
+                string gv = "__give__ *from* *to* *name* *ammount* - Gives an *ammount* between two characters. *from* one character *to* the other, whose ownner's *name* you need to specify. (Your character, admin, accountant) \n";
+                string moneycommands = money + ba + sp + aa + pd + ad + sb +gv;
+
+
+                string exp = "**Experience Commands:**\n";
+                string xp = "__setxp__ *character* *ammount*- Sets the *ammount* of xp that a *character* has. (admin, trainer) \n";
+                string axp = "__gains__ *type* *character* *ammount*- Adds(if *type* = add) or subtracts(if *type* = sub) an *ammount* of xp to or from a *character*. (admin, trainer) \n";
+                string lvl = "__level?__ *character* - Tells you the level of a *character*. (Your character, admin, trainer) \n";
+                string xpq = "__xp?__ *character* - Tells you how much xp a *character* has in total. (Your character, admin, trainer) \n";
+                string nxt = "__next?__ *character* - Tells you how much xp a *charactrer* needs to get to the next level. (Your character, admin, trainer)\n";
+                string expcommands =exp + xp + axp + lvl + xpq  + nxt;
+
+                string per = "**Permission Commands:**\n";
+                string adm = "__admin__ *discordid* - adds person as an admin by thier *discord id*\n";
+                string atm = "__accountant__ *discordid* - adds person as an accountant by thier *discord id*\n";
+                string trn = "__trainer__ *discordid* - adds person as an trainer by thier *discord id*\n";
+                string percommands = per + adm + atm + trn;
+
+                await e.Channel.SendMessage(gcommands);
+                await e.Channel.SendMessage(regcommands);
+                await e.Channel.SendMessage(moneycommands);
+                await e.Channel.SendMessage(expcommands);
+                await e.Channel.SendMessage(percommands);
                 Console.WriteLine(e.User.Name + " needs help");
             });
         }

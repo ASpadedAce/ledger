@@ -14,10 +14,17 @@ namespace Ledger
         static public bool dectest(string tc)
         {
             bool test = true;
+            bool period = false;
             foreach (char n in tc)
             {
-                if (n != '1' || n != '2' || n != '3' || n != '4' || n != '5' || n != '6' || n != '7' || n != '8' || n != '9' || n != '0' || n != '.')
+                if (!( n == '1' || n == '2' || n == '3' || n == '4' || n == '5' || n == '6' || n == '7' || n == '8' || n == '9' || n == '0' || n == '.'))
                     test = false;
+                if ( n == '.')
+                {
+                    if (period == true)
+                        test = false;
+                    period = true;
+                }
             }
             return test;
         }
@@ -36,6 +43,98 @@ namespace Ledger
 
             string range = "Users!D:E";
             SpreadsheetsResource.ValuesResource.GetRequest r = 
+                service.Spreadsheets.Values.Get(ssid, range);
+            ValueRange response = r.Execute();
+            IList<IList<Object>> values = response.Values;
+
+            foreach (var row in values)
+            {
+                count++;
+                if (row[0].ToString() == userid)
+                    test = count;
+            }
+
+            if (test != 0)
+            {
+                test = 0;
+                count = 0;
+                range = "Characters!A1:D";
+                r =
+                    service.Spreadsheets.Values.Get(ssid, range);
+                response = r.Execute();
+                values = response.Values;
+
+                foreach (var row in values)
+                {
+                    count++;
+                    if (row[2].ToString() == charname)
+                        test = count;
+                }
+            }
+
+            return test;
+        }
+
+//tests for accountant, returns line number if admin and the character exists, 0 otherwise
+        static public int accountant(string userid, string charname, string ssid, string apname, UserCredential c)
+        {
+            int test = 0;
+            int count = 0;
+
+            var service = new SheetsService(new BaseClientService.Initializer()
+            {
+                HttpClientInitializer = c,
+                ApplicationName = apname,
+            });
+
+            string range = "Users!F:G";
+            SpreadsheetsResource.ValuesResource.GetRequest r =
+                service.Spreadsheets.Values.Get(ssid, range);
+            ValueRange response = r.Execute();
+            IList<IList<Object>> values = response.Values;
+
+            foreach (var row in values)
+            {
+                count++;
+                if (row[0].ToString() == userid)
+                    test = count;
+            }
+
+            if (test != 0)
+            {
+                test = 0;
+                count = 0;
+                range = "Characters!A1:D";
+                r =
+                    service.Spreadsheets.Values.Get(ssid, range);
+                response = r.Execute();
+                values = response.Values;
+
+                foreach (var row in values)
+                {
+                    count++;
+                    if (row[2].ToString() == charname)
+                        test = count;
+                }
+            }
+
+            return test;
+        }
+
+//tests for trainer, returns line number if admin and the character exists, 0 otherwise
+        static public int trainer(string userid, string charname, string ssid, string apname, UserCredential c)
+        {
+            int test = 0;
+            int count = 0;
+
+            var service = new SheetsService(new BaseClientService.Initializer()
+            {
+                HttpClientInitializer = c,
+                ApplicationName = apname,
+            });
+
+            string range = "Users!H:I";
+            SpreadsheetsResource.ValuesResource.GetRequest r =
                 service.Spreadsheets.Values.Get(ssid, range);
             ValueRange response = r.Execute();
             IList<IList<Object>> values = response.Values;
@@ -95,7 +194,7 @@ namespace Ledger
                         count = test;
                 }
             }
-            Console.WriteLine("test");
+            
             return count;
         }
     }
