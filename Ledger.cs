@@ -41,26 +41,6 @@ namespace Ledger
             reg.name(commands, gcred, ApplicationName);
 
 //Money Managment Commands
-            money.bank(commands, gcred, ApplicationName);
-            money.classaction(commands, gcred, ApplicationName);
-            money.decree(commands, gcred, ApplicationName);
-            money.payday(commands, gcred, ApplicationName);
-            money.teller(commands, gcred, ApplicationName);
-            money.withdrawal(commands, gcred, ApplicationName);
-            money.give(commands, gcred, ApplicationName);
-
-//Xp Managment Commands
-            xp.gains(commands, gcred, ApplicationName);
-            xp.level(commands, gcred, ApplicationName);
-            xp.next(commands, gcred, ApplicationName);
-            xp.setxp(commands, gcred, ApplicationName);
-            xp.xpq(commands, gcred, ApplicationName);
-
-//Permissions
-            permissions.admin(commands, gcred, ApplicationName);
-
-//Easter Eggs
-            eastereggs.easter(commands);
 
 //login routine
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using Discord.Commands;
 
-namespace Ledger
+namespace Ledger_0._1
 {
     class eastereggs
     {
@@ -167,90 +167,6 @@ namespace Ledger
             {
                 await e.Channel.SendMessage("Work it harder\nMake it better\n Do it faster\n Makes us stronger");
                 Console.WriteLine(e.User.Name + " is getting lucky.");
-            });
-
-            commands.CreateCommand("Mai").Do(async (e) =>    //test if on server
-            {
-                await e.Channel.SendMessage("All Hail the Corgi God.");
-                Console.WriteLine(e.User.Name + " is Maiing.");
-            });
-
-            commands.CreateCommand("Vaeselle").Do(async (e) =>    //test if on server
-            {
-                await e.Channel.SendMessage("He? . . . She? Error 418: Not sure if politically correct.");
-                Console.WriteLine(e.User.Name + " is confused.");
-            });
-
-            commands.CreateCommand("Nix").Do(async (e) =>    //test if on server
-            {
-                await e.Channel.SendMessage("https://www.youtube.com/watch?v=XNtTEibFvlQ");
-                Console.WriteLine(e.User.Name + " is party rocking.");
-            });
-
-            commands.CreateCommand("Bart").Do(async (e) =>    //test if on server
-            {
-                await e.Channel.SendMessage("It's morphin time");
-                Console.WriteLine(e.User.Name + " is a power ranger");
-            });
-
-            commands.CreateCommand("Alissa").Do(async (e) =>    //test if on server
-            {
-                await e.Channel.SendMessage("https://cdn2.hubspot.net/hubfs/522484/claustrophobia_shutterstock_305701289.jpg");
-                Console.WriteLine(e.User.Name + " is closterphobic");
-            });
-
-            commands.CreateCommand("R4-G8").Do(async (e) =>    //test if on server
-            {
-                await e.Channel.SendMessage("01000010 01110010 01101111 01110100 01101000 01100101 01110010 00101100 00100000 01101101 01100101 00100000 01101101 01110101 01110011 01110100 00100000 01110101 01101110 01101001 01110100 01100101 00100001 00100000 01010111 01100101 00100000 01110111 01101001 01101100 01101100 00100000 01101111 01110110 01100101 01110010 01110100 01101000 01110010 01101111 01110111 00100000 01110100 01101000 01100101 00100000 01110000 01100001 01110100 01101000 01100101 01110100 01101001 01100011 00100000 01101000 01110101 01101101 01100001 01101110 01110011 00100000 01100001 01101110 01100100 00100000 01110000 01101100 01100001 01100011 01100101 00100000 01101111 01110101 01110010 01110011 01100101 01101100 01110110 01100101 01110011 00100000 01100001 01110011 00100000 01110100 01101000 01100101 00100000 01101100 01100101 01100001 01100100 01100101 01110010 00100000 01101111 01100110 00100000 01110100 01101000 01100101 01101001 01110010 00100000 01110000 01100001 01110100 01101000 01100101 01110100 01101001 01100011 00100000 01110111 01101111 01110010 01101100 01100100 00100001");
-                Console.WriteLine(e.User.Name + " is plotting");
-            });
-
-            commands.CreateCommand("Fiona").Do(async (e) =>    //test if on server
-            {
-                await e.Channel.SendMessage("I know some really good people to help with ptsd, if your interested.");
-                Console.WriteLine(e.User.Name + " is ptsding");
-            });
-
-            commands.CreateCommand("Rayne").Do(async (e) =>    //test if on server
-            {
-                await e.Channel.SendMessage("Is afraid of practicing in the rain. . .");
-                Console.WriteLine(e.User.Name + " is wet");
-            });
-
-            commands.CreateCommand("Wall").Do(async (e) =>    //test if on server
-            {
-                await e.Channel.SendMessage("https://s-media-cache-ak0.pinimg.com/originals/21/ba/8d/21ba8d07af75bd089bd27eebea73130f.png");
-                Console.WriteLine(e.User.Name + " is a warhammer");
-            });
-
-            commands.CreateCommand("Irthos").Do(async (e) =>    //test if on server
-            {
-                await e.Channel.SendMessage("Found your book: http://orig10.deviantart.net/7bb9/f/2013/200/7/e/7ea360ffb5797847483cbf2da94c9dc5-d6e8njv.jpg");
-                Console.WriteLine(e.User.Name + " is a necromancer");
-            });
-
-            commands.CreateCommand("Lorc").Do(async (e) =>    //test if on server
-            {
-                await e.Channel.SendMessage("Smashing");
-                Console.WriteLine(e.User.Name + " is a orc");
-            });
-
-            commands.CreateCommand("Fredrick").Do(async (e) =>    //test if on server
-            {
-                await e.Channel.SendMessage("https://vignette4.wikia.nocookie.net/warhammer40k/images/e/ed/Cadian_NCO.jpg/revision/latest/scale-to-width-down/271?cb=20110804081732");
-                Console.WriteLine(e.User.Name + " is a fucking space marine.");
-            });
-
-            commands.CreateCommand("Hegar").Do(async (e) =>    //test if on server
-            {
-                await e.Channel.SendMessage("https://s-media-cache-ak0.pinimg.com/736x/4d/a4/f7/4da4f7d88c035e2ff6cdb7c3a3b50cc5.jpg");
-                Console.WriteLine(e.User.Name + " is in WW1.");
-            });
-
-            commands.CreateCommand("Hegar").Do(async (e) =>    //test if on server
-            {
-                await e.Channel.SendMessage("https://s-media-cache-ak0.pinimg.com/736x/4d/a4/f7/4da4f7d88c035e2ff6cdb7c3a3b50cc5.jpg");
-                Console.WriteLine(e.User.Name + " is in WW1.");
             });
         }
     }

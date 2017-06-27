@@ -40,8 +40,8 @@ namespace Ledger
                 spcnt++;
                 if (valid.admin(user.Id.ToString(),"Ravoxan", creds.ssid(), ApplicationName, gcred) != 0)
                 {
-                    String range2 = "Users!D" + spcnt.ToString() + ":" + "E" + spcnt.ToString();
-                    var oblist = new List<object>() { name, "=VLOOKUP(D" + spcnt.ToString() + ",A:B,2,0)"};
+                    String range2 = "Users!D" + spcnt.ToString();
+                    var oblist = new List<object>() { name };
                     account.write(range2, oblist, gcred, ApplicationName);
 
                     await e.Channel.SendMessage("New Admin Registered");
